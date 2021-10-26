@@ -1,0 +1,93 @@
+public class Practica {
+    Scanner leer = new Scanner(System.in).useDelimiter("\n");
+    
+    public int prisioneroDulce (int inicio, int cantidadCaramelos, int cantidadLadrones){
+     int podrido = 0;
+     if(cantidadLadrones==1){
+         podrido = inicio;
+         return podrido;
+     }
+     int posic;
+     posic = (cantidadCaramelos%cantidadLadrones);
+     podrido = ((inicio+posic)-cantidadLadrones)-1;
+     
+        if (podrido<0) {
+            podrido = podrido*-1;
+        }
+        return podrido;
+    }
+    
+    public List<String> mediasAmigas(List<String> pasajeros){
+        HashSet<String> amigas = new HashSet();
+        
+        Collections.sort(pasajeros);
+        
+        for (int i = 0; i < pasajeros.size()-1; i++) {
+            for (int j = i+1; j < pasajeros.size(); j++) {
+                if (pasajeros.get(i).equals(pasajeros.get(j))) {
+                amigas.add(pasajeros.get(j));    
+                }
+   
+            }
+        }
+        ArrayList<String> pares = new ArrayList(amigas);
+        return pares;
+    }
+    
+    public Boolean numeroCapicua(Integer num){
+        String cadena = "",invertida="";
+        
+        if (num<0) {
+           num = num*-1; 
+        }else if (num<10){
+            return true;         
+        }else if (num>10) {
+          cadena = String.valueOf(num);
+          invertida = new StringBuilder(cadena).reverse().toString();
+        }
+        return invertida.equals(cadena);
+    }
+
+ public Boolean otroCapicua (Integer num1){
+            
+       boolean bandera;
+     
+        Integer num2 = Math.abs(num1);
+       // System.out.println(num2);
+        
+        String numCadena = String.valueOf(num2);
+        
+        StringBuilder tt = new StringBuilder(numCadena);
+        
+        numCadena = tt.reverse().toString();
+       
+        
+        
+        int num3 = Integer.parseInt(numCadena);
+        
+        if (num2 == num3){
+           // System.out.println("Es capicua");
+            bandera= true;
+        } else{
+           // System.out.println("No es capicua");
+            bandera = false;
+        }
+        return bandera;
+ }
+        
+        public int OtroLadrondeCaramelos(int inicio, int cantidadCaramelos, int cantidadLadrones){
+         
+            int rta = inicio+(cantidadCaramelos%cantidadLadrones)-cantidadLadrones-1; 
+    
+            if (cantidadLadrones ==1) {
+                rta = inicio;
+            }
+            if (rta<0) {
+              rta = rta *-1;  
+            }
+            
+        return rta;   
+            
+        }
+    
+}
